@@ -22,4 +22,10 @@ class OpenMicTest < Minitest::Test
     assert_equal "The Comedy Store", open_mic.location
     assert_equal "3-7-19", open_mic.date
   end
+
+  def test_it_starts_with_an_empty_ary_of_performers
+    open_mic = OpenMic.new({location: "The Comedy Store", date: "3-7-19"})
+
+    assert_equal [], open_mic.performers
+  end
 end
