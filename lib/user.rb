@@ -11,7 +11,10 @@ class User
   end
 
   def tell(receiver, joke)
+    learn(joke)
+    @jokes.uniq!
     receiver.jokes << joke
+    receiver.jokes.uniq!
   end
 
   def joke_by_id(id)

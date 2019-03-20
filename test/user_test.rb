@@ -64,6 +64,38 @@ class UserTest < Minitest::Test
     assert_equal [joke_1, joke_2], ali.jokes
   end
 
+  def test_telling_a_joke_adds_it_to_own_jokes_ary
+    sal = User.new("Sal")
+    ali = User.new("Ali")
+    joke_1 = Joke.new(1, "Why did the strawberry cross the road?", "Because his mother was in a jam.")
+
+    sal.tell(ali, joke_1)
+
+    assert_equal [joke_1], sal.jokes
+  end
+
+  def test_telling_a_joke_multiple_times_does_not_add_to_own_jokes_ary
+    sal = User.new("Sal")
+    ali = User.new("Ali")
+    joke_1 = Joke.new(1, "Why did the strawberry cross the road?", "Because his mother was in a jam.")
+
+    sal.tell(ali, joke_1)
+    sal.tell(ali, joke_1)
+
+    assert_equal [joke_1], sal.jokes
+  end
+
+  def test_hearing_a_joke_multiple_times_does_not_add_to_your_jokes_ary
+    sal = User.new("Sal")
+    ali = User.new("Ali")
+    joke_1 = Joke.new(1, "Why did the strawberry cross the road?", "Because his mother was in a jam.")
+
+    sal.tell(ali, joke_1)
+    sal.tell(ali, joke_1)
+
+    assert_equal [joke_1], ali.jokes
+  end
+
   def test_it_reports_joke_by_id
     sal = User.new("Sal")
     ali = User.new("Ali")

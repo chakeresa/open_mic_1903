@@ -13,4 +13,15 @@ class OpenMic
   def welcome(performer)
     @performers << performer
   end
+
+  def repeated_jokes?
+    all_jokes = []
+
+    @performers.each do |performer|
+      all_jokes << performer.jokes
+    end
+# require "pry"; binding.pry
+    all_jokes.flatten!
+    !all_jokes.length == all_jokes.uniq.length
+  end
 end
