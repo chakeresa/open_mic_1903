@@ -15,13 +15,13 @@ class OpenMic
   end
 
   def repeated_jokes?
-    all_jokes = []
+    all_open_mic_jokes_ids = []
 
     @performers.each do |performer|
-      all_jokes << performer.jokes
+      all_open_mic_jokes_ids << performer.all_joke_ids
     end
-# require "pry"; binding.pry
-    all_jokes.flatten!
-    !all_jokes.length == all_jokes.uniq.length
+    
+    all_open_mic_jokes_ids.flatten!
+    all_open_mic_jokes_ids.length != all_open_mic_jokes_ids.uniq.length
   end
 end

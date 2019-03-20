@@ -41,7 +41,6 @@ class OpenMicTest < Minitest::Test
   end
 
   def test_repeated_jokes_starts_out_false
-    skip # SKIPPED!
     open_mic = OpenMic.new({location: "The Comedy Store", date: "3-7-19"})
 
     assert_equal false,  open_mic.repeated_jokes?

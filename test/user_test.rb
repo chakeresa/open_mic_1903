@@ -118,4 +118,17 @@ class UserTest < Minitest::Test
     assert_equal joke1, ali.joke_by_id(1)
     assert_equal joke2, ali.joke_by_id(2)
   end
+
+  def test_all_joke_ids_lists_all_joke_ids_for_user
+    sal = User.new("Sal")
+    ali = User.new("Ali")
+    joke1 = Joke.new(1, "Why did the strawberry cross the road?", "Because his mother was in a jam.")
+    joke2 = Joke.new(2, "How do you keep a lion from charging?", "Take away its credit cards.")
+
+    sal.learn(joke1)
+    sal.learn(joke2)
+
+    assert_equal [1,2], sal.all_joke_ids
+    assert_equal [], ali.all_joke_ids
+  end
 end

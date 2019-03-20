@@ -22,4 +22,10 @@ class User
       joke.id == id
     end
   end
+
+  def all_joke_ids
+    @jokes.map do |joke|
+      joke.id
+    end
+  end
 end
